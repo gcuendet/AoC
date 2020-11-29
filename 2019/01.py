@@ -7,6 +7,7 @@
 
 import math
 import urllib.request
+from codetiming import Timer
 
 
 def get_input(url, encoding="utf-8"):
@@ -22,6 +23,7 @@ def fuel_requirement(module_mass):
     return math.floor(module_mass / 3.0) - 2
 
 
+@Timer(name="part 1")
 def part_one():
     lines = read_input("01_input.txt")
     total_fuel = 0
@@ -30,6 +32,7 @@ def part_one():
     return total_fuel
 
 
+@Timer(name="part 2")
 def part_two():
     lines = read_input("01_input.txt")
     total_fuel = 0

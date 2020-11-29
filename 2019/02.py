@@ -5,6 +5,8 @@
 
 # input: https://adventofcode.com/2019/day/2/input
 
+from codetiming import Timer
+
 
 def read_input(filepath):
     with open(filepath, "r") as f:
@@ -36,6 +38,7 @@ def noun_verb(noun, verb):
     return memory[0]
 
 
+@Timer(name="part 1")
 def part_one():
     memory = read_input("02_input.txt")
     # restore gravity assist program
@@ -45,6 +48,7 @@ def part_one():
     return res[0]
 
 
+@Timer(name="part 2")
 def part_two():
     """ Brute force solution """
     memory = read_input("02_input.txt")
