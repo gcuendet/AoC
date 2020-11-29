@@ -12,19 +12,19 @@ def read_input(filepath):
 
 
 def run_code(memory):
-    instruction_pointer = 0;
+    instruction_pointer = 0
     while instruction_pointer < len(memory):
         opcode = memory[instruction_pointer]
         if opcode == 99:
             return memory
-        
-        p_addr = [memory[instruction_pointer+i] for i in range(1,4)]
+
+        p_addr = [memory[instruction_pointer + i] for i in range(1, 4)]
         if opcode == 1:
-            memory[p_addr[2]] = memory[p_addr[0]]+memory[p_addr[1]]
+            memory[p_addr[2]] = memory[p_addr[0]] + memory[p_addr[1]]
         elif opcode == 2:
-            memory[p_addr[2]] = memory[p_addr[0]]*memory[p_addr[1]]
+            memory[p_addr[2]] = memory[p_addr[0]] * memory[p_addr[1]]
         else:
-            raise(RuntimeError("Unknown code. Should be 1, 2, or 99"))
+            raise (RuntimeError("Unknown code. Should be 1, 2, or 99"))
         instruction_pointer += 4
 
 
@@ -48,11 +48,11 @@ def part_one():
 def part_two():
     """ Brute force solution """
     memory = read_input("02_input.txt")
-    for n in range(0,100):
-        for v in range(0,100):
-            res = noun_verb(n,v)
-            if res==19690720:
-                return 100*n+v
+    for n in range(0, 100):
+        for v in range(0, 100):
+            res = noun_verb(n, v)
+            if res == 19690720:
+                return 100 * n + v
 
 
 if __name__ == "__main__":

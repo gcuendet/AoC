@@ -14,11 +14,12 @@ def get_input(url, encoding="utf-8"):
 
 
 def read_input(filepath):
-    with open(filepath, 'r') as f:
+    with open(filepath, "r") as f:
         return [int(module) for module in f.readlines()]
 
+
 def fuel_requirement(module_mass):
-    return math.floor(module_mass / 3.) - 2
+    return math.floor(module_mass / 3.0) - 2
 
 
 def part_one():
@@ -34,12 +35,12 @@ def part_two():
     total_fuel = 0
     for module in lines:
         fuel = fuel_requirement(module)
-        while(fuel>0):
-            total_fuel+=fuel
+        while fuel > 0:
+            total_fuel += fuel
             fuel = fuel_requirement(fuel)
     return total_fuel
+
 
 if __name__ == "__main__":
     print(part_one())
     print(part_two())
-    
