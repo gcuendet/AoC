@@ -4,7 +4,14 @@
 # https://adventofcode.com/2019/day/5
 
 
+import argparse
 from intcode_computer import IntcodeComputer
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", "--input")
+    return parser.parse_args()
 
 
 def read_input(filepath):
@@ -13,7 +20,7 @@ def read_input(filepath):
 
 
 if __name__ == "__main__":
-    filepath = "05_input.txt"
-    memory = read_input(filepath)
+    args = parse_args()
+    memory = read_input(args.input)
     computer = IntcodeComputer(memory)
     computer.run()
