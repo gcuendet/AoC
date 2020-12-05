@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 # Source of the puzzle:
-# https://adventofcode.com/2019/day/1
+# https://adventofcode.com/2020/day/1
 
-# input: https://adventofcode.com/2019/day/1/input
+# input: https://adventofcode.com/2020/day/1/input
 
 import math
 from codetiming import Timer
@@ -19,19 +19,19 @@ def product_of_sum(items, target=2020):
     for i in items:
         if (target - i) in items:
             return i * (target - i)
-    
+
 
 @Timer()
 def part_one():
     items = read_input()
     return product_of_sum(items)
-    
+
 
 @Timer()
 def part_two():
     items = read_input()
     for i in items:
-        sol = product_of_sum([el for el in items if el != i], target=(2020-i))
+        sol = product_of_sum([el for el in items if el != i], target=(2020 - i))
         if sol:
             return i * sol
 

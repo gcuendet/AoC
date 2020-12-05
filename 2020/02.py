@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 # Source of the puzzle:
-# https://adventofcode.com/2019/day/1
+# https://adventofcode.com/2020/day/2
 
-# input: https://adventofcode.com/2019/day/1/input
+# input: https://adventofcode.com/2020/day/2/input
 
 
 def is_valid(password: str, policy):
