@@ -5,8 +5,9 @@
 
 
 class IntcodeComputer:
-    def __init__(self, memory):
+    def __init__(self, memory, inputs=[]):
         self.memory = memory
+        self.inputs = inputs[::-1]
         self.instruction_pointer = 0
         self.opcodes = {
             1: self.add,
@@ -67,12 +68,11 @@ class IntcodeComputer:
     def input(self):
         a, mode_a = self.get_one_value()
         if mode_a == 0:
-            self.memory[a] = int(input())
+            self.memory[a] = int(self.get_inputs())
 
     def output(self):
         a, mode_a = self.get_one_value()
-        if mode_a == 0:
-            print(self.memory[a])
+        return self.value(a, mode_a)
 
     def jump_if_true(self):
         [a, b], [mode_a, mode_b] = self.get_two_values(False)
@@ -101,7 +101,20 @@ class IntcodeComputer:
     def end(self):
         self.finished = True
 
+    def get_inputs(self):
+        return self.inputs.pop() if self.inputs else None
+
     def run(self):
-        while not self.finished and self.instruction_pointer < len(self.memory):
+        val = None
+        while (
+            not self.finished
+            and val is None
+            and self.instruction_pointer < len(self.memory)
+        ):
             code = self.memory[self.instruction_pointer] % 100
-            self.opcodes[code]()
+            ret = self.opcodes[code]()
+            val = ret if ret is not None else val
+        return val
+
+    def add_input(self, value):
+        self.inputs = [value] + self.inputs
