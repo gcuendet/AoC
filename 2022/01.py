@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+
+# Source of the puzzle:
+# https://adventofcode.com/2022/day/1
+
+
 def parse_input(filepath):
     with open(filepath, "r") as f:
         return f.readlines()
